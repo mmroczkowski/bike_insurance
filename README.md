@@ -43,8 +43,7 @@ This repository provides a simple Spring Boot application for calculating bicycl
 
 7. **Example Response Discrepancy**  
    In example response, for year 2023 the **DAMAGE** premium for an **OTHER** make with a sum insured of 200 and bike manufacture year
-   2019 is shown as **11.00**. However, using the factor tables in `InsuranceBaseScript`, the application calculates
-   **7.67**.
+   2019 is shown as **11.00**. However, when manually calculated it should be **7.67**.
 
    **Calculation**:
    1. **Sum Insured** is halved for DAMAGE: `200 / 2 = 100`.
