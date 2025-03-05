@@ -1,6 +1,6 @@
 package com.demo.bikeinsurance.dto;
 
-import com.demo.bikeinsurance.vaidation.ValidManufactureYear;
+import com.demo.bikeinsurance.validation.ValidManufactureYear;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;

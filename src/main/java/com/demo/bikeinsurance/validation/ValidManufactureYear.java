@@ -1,4 +1,4 @@
-package com.demo.bikeinsurance.vaidation;
+package com.demo.bikeinsurance.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
