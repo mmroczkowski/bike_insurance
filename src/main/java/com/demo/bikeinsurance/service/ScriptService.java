@@ -1,5 +1,6 @@
 package com.demo.bikeinsurance.service;
 
+import com.demo.bikeinsurance.exception.MissingScriptException;
 import groovy.lang.GroovyShell;
 import groovy.lang.MissingPropertyException;
 import groovy.lang.Script;
@@ -18,7 +19,7 @@ public class ScriptService {
     public Object executeScript(String scriptName, Map<String, Object> bindings) {
         ClassPathResource resource = new ClassPathResource("scripts/" + scriptName);
         if (!resource.exists()) {
-            throw new IllegalArgumentException("Script file not found: " + scriptName);
+            throw new MissingScriptException("Script file not found: " + scriptName);
         }
 
         try (InputStreamReader reader = new InputStreamReader(resource.getInputStream())) {
@@ -35,4 +36,3 @@ public class ScriptService {
         }
     }
 }
-

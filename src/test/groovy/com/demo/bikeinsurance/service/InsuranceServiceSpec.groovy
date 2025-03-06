@@ -173,12 +173,15 @@ class InsuranceServiceSpec extends Specification {
 
         and: "Mock script to throw an exception"
         def theftSumInsuredPath = "insurance_sum/THEFT_SumInsured.groovy"
-        scriptService.executeScript(theftSumInsuredPath, _) >> { throw new RuntimeException("Script execution failed") }
+        scriptService.executeScript(theftSumInsuredPath, _) >> {
+            throw new IllegalStateException("Script execution failed")
+        }
 
         when: "Calculate premium"
         insuranceService.calculatePremium(policyRequest)
 
         then: "Exception is thrown"
-        thrown(RuntimeException)
+        thrown(IllegalStateException)
     }
+
 }

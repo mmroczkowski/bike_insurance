@@ -56,6 +56,10 @@ This repository provides a simple Spring Boot application for calculating bicycl
 8. **Missing Coverage Type Documentation**  
    Coverage type is present in examples and swagger documentation, but has no explicit functionality in requirements. For now, it is simply copied to response.
 
+9. **Exception handling**  
+   All runtime exceptions are handled by a global exception handler that produces a consistent `ApiError` response.
+   Missing risk scripts trigger a dedicated `MissingScriptException`, which is mapped to HTTP 400 because it occurs when an unsupported risk type is used in a request.
+
 ## Running & Usage
 
 1. **Build**:
