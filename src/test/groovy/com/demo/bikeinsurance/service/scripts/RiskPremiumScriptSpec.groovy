@@ -80,7 +80,7 @@ class RiskPremiumScriptSpec extends Specification {
         groovyScriptService.executeScript("risk_premium/THEFT_Premium.groovy", bindings)
 
         then:
-        thrown(IllegalArgumentException)
+        thrown(IllegalStateException)
     }
 
     def "test damage premium with sumInsured=100, make=Pearl, model=Gravel SL EVO, age=2"() {
@@ -127,7 +127,7 @@ class RiskPremiumScriptSpec extends Specification {
         groovyScriptService.executeScript("risk_premium/DAMAGE_Premium.groovy", bindings)
 
         then:
-        thrown(IllegalArgumentException)
+        thrown(IllegalStateException)
     }
 
     def "test third party damage premium with sumInsured=100, riskCount=0"() {
@@ -168,6 +168,6 @@ class RiskPremiumScriptSpec extends Specification {
         groovyScriptService.executeScript("risk_premium/THIRD_PARTY_DAMAGE_Premium.groovy", bindings)
 
         then:
-        thrown(IllegalArgumentException)
+        thrown(IllegalStateException)
     }
 }

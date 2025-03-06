@@ -40,7 +40,7 @@ class GlobalExceptionHandlerSpec extends Specification {
                 .content(toJson(request)))
 
         then: "Expect 400 Bad Request with correct error message"
-        result.andExpect(status().isInternalServerError())
+        result.andExpect(status().isBadRequest())
                 .andExpect(jsonPath('$.status').value(400))
                 .andExpect(jsonPath('$.error').value("Bad Request"))
                 .andExpect(jsonPath('$.message').value("Missing script for risk UNSUPPORTED_RISK"))

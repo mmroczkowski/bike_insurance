@@ -20,28 +20,22 @@ This repository provides a simple Spring Boot application for calculating bicycl
    - Scripts are **divided by risk type** and loaded dynamically at runtime (one for Sum Insured, one for Premium).
    - This allows easy extension or future runtime modifications without touching the core code.
 
-3. **Script Caching Considerations**
-   - Parsing Groovy scripts repeatedly can impact performance.
-   - However, the script objects themselves are not thread-safe; caching them would require a more robust solution than
-     a simple in-memory map.
-   - Consequently, no caching strategy is implemented in this project to keep code simple.
-
-4. **Adding New Risk Types**
+3. **Adding New Risk Types**
    - To incorporate a new risk type, create two Groovy scripts: one for calculating Sum Insured and another for
      Premium.
    - Update the base script data if you need new factor ranges or a different base premium.
 
-5. **Precision and Rounding**
+4. **Precision and Rounding**
    - Used `BigDecimal` with default precision for calculations and applied **HALF_UP** rounding just before response
      creation.
    - This ensures high precision internally and consistent human-friendly response in API.
 
-6. **Testing**
+5. **Testing**
    - **Spock** is used because of its more expressive syntax in Groovy.
    - Tests aim to be **realistic** and not overly extensive.
    - **No integration tests** were included, following the stated requirements.
 
-7. **Example Response Discrepancy**  
+6. **Example Response Discrepancy**  
    In example response, for year 2023 the **DAMAGE** premium for an **OTHER** make with a sum insured of 200 and bike manufacture year
    2019 is shown as **11.00**. However, when manually calculated it should be **7.67**.
 
@@ -53,10 +47,10 @@ This repository provides a simple Spring Boot application for calculating bicycl
 
    **Final Premium** = `10 * 0.5 * 1.53 ≈ 7.67`.
 
-8. **Missing Coverage Type Documentation**  
+7. **Missing Coverage Type Documentation**  
    Coverage type is present in examples and swagger documentation, but has no explicit functionality in requirements. For now, it is simply copied to response.
 
-9. **Exception handling**  
+8. **Exception handling**  
    All runtime exceptions are handled by a global exception handler that produces a consistent `ApiError` response.
    Missing risk scripts trigger a dedicated `MissingScriptException`, which is mapped to HTTP 400 because it occurs when an unsupported risk type is used in a request.
 
