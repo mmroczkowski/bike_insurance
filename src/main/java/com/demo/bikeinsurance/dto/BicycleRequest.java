@@ -26,6 +26,7 @@ public record BicycleRequest(
 
         @Min(value = 0, message = "Sum insured must be at least 0")
         @Max(value = 9999, message = "Sum insured cannot exceed 9999")
+        @NotNull(message = "SumInsured cannot be null")
         BigDecimal sumInsured,
 
         @NotNull(message = "Risks cannot be null")
