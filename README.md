@@ -32,9 +32,9 @@ This repository provides a simple Spring Boot application for calculating bicycl
    - Update the base script data if you need new factor ranges or a different base premium.
 
 5. **Precision and Rounding**
-   - Uses `BigDecimal` with default precision for calculations and applies **HALF_UP** rounding just before response
+   - Used `BigDecimal` with default precision for calculations and applied **HALF_UP** rounding just before response
      creation.
-   - This ensures high precision and consistent rounding behavior across the application.
+   - This ensures high precision internally and consistent human-friendly response in API.
 
 6. **Testing**
    - **Spock** is used because of its more expressive syntax in Groovy.
@@ -51,7 +51,7 @@ This repository provides a simple Spring Boot application for calculating bicycl
    3. **Sum Insured Factor** (for 100) is **0.5**.
    4. **Age Factor** (for age 4 with “OTHER” make) interpolates to ~**1.53**.
 
-   **Final Premium** = `10 * 0.5 * 1.53 ≈ 7.67`. Cause of discrepancy in example response is unknown.
+   **Final Premium** = `10 * 0.5 * 1.53 ≈ 7.67`.
 
 8. **Missing Coverage Type Documentation**  
    Coverage type is present in examples and swagger documentation, but has no explicit functionality in requirements. For now, it is simply copied to response.
